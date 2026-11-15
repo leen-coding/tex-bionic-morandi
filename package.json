@@ -1,0 +1,163 @@
+{
+  "name": "tex-bionic-morandi",
+  "displayName": "TeX Bionic Morandi",
+  "description": "%description%",
+  "version": "1.0.0",
+  "publisher": "leen-coding",
+  "author": {
+    "name": "leen-coding"
+  },
+  "license": "MIT",
+  "icon": "images/icon.png",
+  "galleryBanner": {
+    "color": "#EFE9E1",
+    "theme": "light"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leen-coding/tex-bionic-morandi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/leen-coding/tex-bionic-morandi/issues"
+  },
+  "homepage": "https://github.com/leen-coding/tex-bionic-morandi#readme",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Visualization",
+    "Education",
+    "Other"
+  ],
+  "keywords": [
+    "latex",
+    "tex",
+    "bionic reading",
+    "readability",
+    "morandi"
+  ],
+  "main": "./extension.js",
+  "l10n": "./l10n",
+  "activationEvents": [
+    "onLanguage:latex",
+    "onLanguage:tex"
+  ],
+  "scripts": {
+    "test": "node test/parser.test.js",
+    "package": "npx @vscode/vsce@3.2.1 package"
+  },
+  "contributes": {
+    "commands": [
+      { "command": "texBionic.menu", "title": "%command.menu%", "category": "TeX Bionic" },
+      { "command": "texBionic.toggle", "title": "%command.toggle%", "category": "TeX Bionic" },
+      { "command": "texBionic.selectPalette", "title": "%command.selectPalette%", "category": "TeX Bionic" },
+      { "command": "texBionic.selectDepth", "title": "%command.selectDepth%", "category": "TeX Bionic" },
+      { "command": "texBionic.selectSaturation", "title": "%command.selectSaturation%", "category": "TeX Bionic" },
+      { "command": "texBionic.selectContrast", "title": "%command.selectContrast%", "category": "TeX Bionic" },
+      { "command": "texBionic.selectColorCycle", "title": "%command.selectColorCycle%", "category": "TeX Bionic" }
+    ],
+    "keybindings": [
+      {
+        "command": "texBionic.toggle",
+        "key": "ctrl+alt+b",
+        "mac": "cmd+alt+b",
+        "when": "editorTextFocus && editorLangId =~ /^(la)?tex$/"
+      }
+    ],
+    "configuration": {
+      "title": "TeX Bionic Morandi",
+      "properties": {
+        "texBionic.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "%config.enabled%"
+        },
+        "texBionic.palette": {
+          "type": "string",
+          "default": "morandi",
+          "enum": ["morandi", "mist", "sage", "rose", "oat"],
+          "enumDescriptions": [
+            "%config.palette.morandi%",
+            "%config.palette.mist%",
+            "%config.palette.sage%",
+            "%config.palette.rose%",
+            "%config.palette.oat%"
+          ],
+          "description": "%config.palette%"
+        },
+        "texBionic.depth": {
+          "type": "string",
+          "default": "standard",
+          "enum": ["soft", "standard", "deep", "deeper", "deepest"],
+          "enumDescriptions": [
+            "%config.depth.soft%",
+            "%config.depth.standard%",
+            "%config.depth.deep%",
+            "%config.depth.deeper%",
+            "%config.depth.deepest%"
+          ],
+          "description": "%config.depth%"
+        },
+        "texBionic.saturation": {
+          "type": "string",
+          "default": "standard",
+          "enum": ["muted", "standard", "vivid"],
+          "enumDescriptions": [
+            "%config.saturation.muted%",
+            "%config.saturation.standard%",
+            "%config.saturation.vivid%"
+          ],
+          "description": "%config.saturation%"
+        },
+        "texBionic.restOpacity": {
+          "type": "number",
+          "default": 0.85,
+          "minimum": 0.3,
+          "maximum": 1,
+          "description": "%config.restOpacity%"
+        },
+        "texBionic.colorCycle": {
+          "type": "string",
+          "default": "paragraph",
+          "enum": ["paragraph", "sentence", "word", "none"],
+          "enumDescriptions": [
+            "%config.colorCycle.paragraph%",
+            "%config.colorCycle.sentence%",
+            "%config.colorCycle.word%",
+            "%config.colorCycle.none%"
+          ],
+          "description": "%config.colorCycle%"
+        },
+        "texBionic.fixationRatio": {
+          "type": "number",
+          "default": 0.45,
+          "minimum": 0.2,
+          "maximum": 0.8,
+          "description": "%config.fixationRatio%"
+        },
+        "texBionic.minWordLength": {
+          "type": "integer",
+          "default": 2,
+          "minimum": 1,
+          "description": "%config.minWordLength%"
+        },
+        "texBionic.fixationWeight": {
+          "type": "string",
+          "default": "700",
+          "enum": ["500", "600", "700", "800", "900"],
+          "description": "%config.fixationWeight%"
+        },
+        "texBionic.colorizeRest": {
+          "type": "boolean",
+          "default": true,
+          "description": "%config.colorizeRest%"
+        },
+        "texBionic.colorizeSyntax": {
+          "type": "boolean",
+          "default": true,
+          "description": "%config.colorizeSyntax%"
+        }
+      }
+    }
+  }
+}

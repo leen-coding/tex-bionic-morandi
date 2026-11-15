@@ -1,0 +1,8 @@
+.github/**
+.gitignore
+test/**
+scripts/**
+node_modules/**
+images/demo-*.png
+images/icon.svg
+*.vsix
